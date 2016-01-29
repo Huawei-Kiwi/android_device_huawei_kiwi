@@ -43,19 +43,23 @@ TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a53
 
-# Kernel
-TARGET_CUSTOM_KERNEL_HEADERS := device/huawei/kiwi/include
-BOARD_KERNEL_BASE        := 0x80000000
-BOARD_KERNEL_PAGESIZE    := 2048
-BOARD_KERNEL_TAGS_OFFSET := 0x00000100
-BOARD_RAMDISK_OFFSET     := 0x01000000
-BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 earlyprintk androidboot.selinux=permissive
-BOARD_KERNEL_SEPARATED_DT := true
-BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100 --dt device/huawei/kiwi/recovery/dt.img
-TARGET_PREBUILT_KERNEL := device/huawei/kiwi/recovery/kernel
-TARGET_CPU_SMP := true
 TARGET_USES_64_BIT_BINDER := true
-#TARGET_USES_UNCOMPRESSED_KERNEL := true
+
+# Kernel
+BOARD_DTBTOOL_ARGS := -2
+BOARD_KERNEL_BASE        := 0x80000000
+BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 earlyprintk androidboot.selinux=permissive
+BOARD_KERNEL_PAGESIZE    := 2048
+BOARD_KERNEL_SEPARATED_DT := true
+BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100
+BOARD_RAMDISK_OFFSET     := 0x01000000
+TARGET_KERNEL_ARCH := arm64
+TARGET_KERNEL_SOURCE := kernel/huawei/msm8939
+TARGET_KERNEL_CONFIG := kiwi_defconfig
+TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
+TARGET_CUSTOM_KERNEL_HEADERS := device/huawei/kiwi/include
+
+TARGET_CPU_SMP := true
 
 # Partitions
 BOARD_HAS_LARGE_FILESYSTEM := true
