@@ -58,6 +58,7 @@ TARGET_KERNEL_SOURCE := kernel/huawei/msm8939
 TARGET_KERNEL_CONFIG := kiwi_defconfig
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 TARGET_CUSTOM_KERNEL_HEADERS := device/huawei/kiwi/include
+TARGET_USES_UNCOMPRESSED_KERNEL := true
 
 TARGET_CPU_SMP := true
 
@@ -83,6 +84,7 @@ TW_TARGET_USES_QCOM_BSP := true
 TW_INCLUDE_CRYPTO := true
 TARGET_RECOVERY_QCOM_RTC_FIX := true
 BOARD_SUPPRESS_SECURE_ERASE := true
+TW_NEW_ION_HEAP := true
 
 #Use dlmalloc instead of jemalloc for mallocs
 MALLOC_IMPL := dlmalloc
