@@ -88,6 +88,7 @@ RECOVERY_GRAPHICS_USE_LINELENGTH := true
 TWHAVE_SELINUX := true
 TARGET_RECOVERY_QCOM_RTC_FIX := true
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
+TW_INPUT_BLACKLIST := "accelerometer"
 
 # Vold
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
