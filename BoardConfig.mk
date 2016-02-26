@@ -20,7 +20,7 @@
 LOCAL_PATH := device/huawei/kiwi
 
 # Assert
-# TARGET_OTA_ASSERT_DEVICE := 
+TARGET_OTA_ASSERT_DEVICE := kiwi
 
 # Platform
 TARGET_BOARD_PLATFORM := msm8916
