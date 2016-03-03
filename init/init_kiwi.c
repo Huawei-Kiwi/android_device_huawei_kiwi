@@ -93,6 +93,11 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
     else if (strstr(model, "AL20") != NULL) {
         property_set("ro.build.description", "KIW-AL20-user 5.1.1 GRJ90 C432B130 release-keys");
         property_set("ro.build.fingerprint", "HONOR/KIW-AL20/HNKIW-Q:5.1.1/HONORKIW-AL20/C432B130:user/release-keys");
+    }
+    /* Chinese WCDMA version KIW-UL00
+    else if (strstr(model, "UL00") != NULL) {
+        property_set("ro.build.description", "KIW-UL00-user 5.1.1 GRJ90 C00B140 release-keys");
+        property_set("ro.build.fingerprint", "HONOR/KIW-UL00/HNKIW-Q:5.1.1/HONORKIW-UL00/C00B140:user/release-keys");
     }*/
 }
 
