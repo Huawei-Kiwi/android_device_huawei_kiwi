@@ -66,7 +66,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         property_set("ro.build.description", "KIW-L24-user 5.1.1 GRJ90 C567B1.0 release-keys");
         property_set("ro.build.fingerprint", "HONOR/KIW-L24/HNKIW-Q:5.1.1/HONORKIW-L24/C567B130:user/release-keys");
     }
-    /* Honor 5x Russia L23 
+    /* Honor 5x Russia L23 */
     else if (strstr(model, "L23") != NULL) {
         common_properties();
         property_set("ro.build.description", "KIW-L23-user 5.1.1 GRJ90 C567B140 release-keys");
@@ -84,17 +84,17 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         property_set("ro.build.description", "KIW-L21-user 5.1.1 GRJ90 C432B130 release-keys");
         property_set("ro.build.fingerprint", "HONOR/KIW-L21/HNKIW-Q:5.1.1/HONORKIW-L21/C432B130:user/release-keys");
     }
-    /* Honor 5x AL10 Chinese*/
+    /* Honor 5x AL10 Chinese */
     else if (strstr(model, "AL10") != NULL) {
         property_set("ro.build.description", "KIW-AL10-user 5.1.1 GRJ90 C92B175 release-keys");
         property_set("ro.build.fingerprint", "HONOR/KIW-AL10/HNKIW-Q:5.1.1/HONORKIW-AL10/C92B175:user/release-keys");
     }
-    /* Honor 5x AL20 Chinese 
+    /* Honor 5x AL20 Chinese */
     else if (strstr(model, "AL20") != NULL) {
         property_set("ro.build.description", "KIW-AL20-user 5.1.1 GRJ90 C432B130 release-keys");
         property_set("ro.build.fingerprint", "HONOR/KIW-AL20/HNKIW-Q:5.1.1/HONORKIW-AL20/C432B130:user/release-keys");
     }
-    /* Chinese WCDMA version KIW-UL00
+    /* Chinese WCDMA version KIW-UL00 */
     else if (strstr(model, "UL00") != NULL) {
         property_set("ro.build.description", "KIW-UL00-user 5.1.1 GRJ90 C00B140 release-keys");
         property_set("ro.build.fingerprint", "HONOR/KIW-UL00/HNKIW-Q:5.1.1/HONORKIW-UL00/C00B140:user/release-keys");
