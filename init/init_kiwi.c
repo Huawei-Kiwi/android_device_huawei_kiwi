@@ -1,6 +1,5 @@
-﻿/*
+/*
    Copyright (c) 2016, The Linux Foundation. All rights reserved.
-
    Redistribution and use in source and binary forms, with or without
    modification, are permitted provided that the following conditions are
    met:
@@ -13,7 +12,6 @@
     * Neither the name of The Linux Foundation nor the names of its
       contributors may be used to endorse or promote products derived
       from this software without specific prior written permission.
-
    THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
    WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
@@ -61,44 +59,49 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
             break;
 
     /* Honor 5x USA L24 */
-    if (strstr(model, "L24") != NULL) {
+    if (strstr(model, "KIW-L24") != NULL) {
         common_properties();
         property_set("ro.build.description", "KIW-L24-user 5.1.1 GRJ90 C567B1.0 release-keys");
         property_set("ro.build.fingerprint", "HONOR/KIW-L24/HNKIW-Q:5.1.1/HONORKIW-L24/C567B130:user/release-keys");
     }
     /* Honor 5x Russia L23 */
-    else if (strstr(model, "L23") != NULL) {
+    else if (strstr(model, "KIW-L23") != NULL) {
         common_properties();
         property_set("ro.build.description", "KIW-L23-user 5.1.1 GRJ90 C567B140 release-keys");
         property_set("ro.build.fingerprint", "HONOR/KIW-L23/HNKIW-Q:5.1.1/HONORKIW-L23/C567B140:user/release-keys");
     }*/
     /* Honor 5x India L22 */
-    else if (strstr(model, "L22") != NULL) {
+    else if (strstr(model, "KIW-L22") != NULL) {
         common_properties();
         property_set("ro.build.description", "KIW-L22-user 5.1.1 GRJ90 C675B130 release-keys");
         property_set("ro.build.fingerprint", "HONOR/KIW-L22/HNKIW-Q:5.1.1/HONORKIW-L22/C675B130:user/release-keys");
     }
     /* Honor 5x EU L21 */
-    else if (strstr(model, "L21") != NULL) {
+    else if (strstr(model, "KIW-L21") != NULL) {
         common_properties();
         property_set("ro.build.description", "KIW-L21-user 5.1.1 GRJ90 C432B130 release-keys");
         property_set("ro.build.fingerprint", "HONOR/KIW-L21/HNKIW-Q:5.1.1/HONORKIW-L21/C432B130:user/release-keys");
     }
     /* Honor 5x AL10 Chinese */
-    else if (strstr(model, "AL10") != NULL) {
+    else if (strstr(model, "KIW-AL10") != NULL) {
         property_set("ro.build.description", "KIW-AL10-user 5.1.1 GRJ90 C92B175 release-keys");
         property_set("ro.build.fingerprint", "HONOR/KIW-AL10/HNKIW-Q:5.1.1/HONORKIW-AL10/C92B175:user/release-keys");
     }
     /* Honor 5x AL20 Chinese */
-    else if (strstr(model, "AL20") != NULL) {
+    else if (strstr(model, "KIW-AL20") != NULL) {
         property_set("ro.build.description", "KIW-AL20-user 5.1.1 GRJ90 C432B130 release-keys");
         property_set("ro.build.fingerprint", "HONOR/KIW-AL20/HNKIW-Q:5.1.1/HONORKIW-AL20/C432B130:user/release-keys");
     }
     /* Chinese WCDMA version KIW-UL00 */
-    else if (strstr(model, "UL00") != NULL) {
+    else if (strstr(model, "KIW-UL00") != NULL) {
         property_set("ro.build.description", "KIW-UL00-user 5.1.1 GRJ90 C00B140 release-keys");
         property_set("ro.build.fingerprint", "HONOR/KIW-UL00/HNKIW-Q:5.1.1/HONORKIW-UL00/C00B140:user/release-keys");
-    }*/
+    }
+    /* HUAWEI GX5 version KII-L22 (same as honor, evidently from Japan) */
+    else if (strstr(model, "KII-L22") != NULL) {
+        property_set("ro.build.description", "KII-L22-user 5.1.1 GRJ90 C635B131 release-keys");
+        property_set("ro.build.fingerprint", "HUAWEI/KII-L22/HWKII-Q:5.1.1/HUAWEIKII-L22/C635B131:user/release-keys");
+    }
 }
 
 void common_properties();
