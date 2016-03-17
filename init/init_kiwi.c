@@ -102,6 +102,11 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         property_set("ro.build.description", "KII-L22-user 5.1.1 GRJ90 C635B131 release-keys");
         property_set("ro.build.fingerprint", "HUAWEI/KII-L22/HWKII-Q:5.1.1/HUAWEIKII-L22/C635B131:user/release-keys");
     }
+    /* HUAWEI GX5 version KII-L21 (same as honor) */
+    else if (strstr(model, "KII-L21") != NULL) {
+        property_set("ro.build.description", "KII-L21-user 5.1.1 GRJ90 C185B130 release-keys");
+        property_set("ro.build.fingerprint", "HUAWEI/KII-L21/HWKII-Q:5.1.1/HUAWEIKII-L21/C185B130:user/release-keys");
+    }
 }
 
 void common_properties();
