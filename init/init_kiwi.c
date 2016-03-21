@@ -34,23 +34,80 @@
 #include "log.h"
 #include "util.h"
 
-#include "init_msm.h"
+typedef struct {
+    const char *model;
+    const char *description;
+    const char *fingerprint;
+} match_t;
 
-void common_properties();
+static match_t matches[] = {
+    /* Honor 5x USA L24 */
+    {
+        "KIW-L24",
+        "KIW-L24-user 5.1.1 GRJ90 C567B1.0 release-keys",
+        "HONOR/KIW-L24/HNKIW-Q:5.1.1/HONORKIW-L24/C567B130:user/release-keys"
+    },
+    /* Honor 5x Russia L23 */
+    {
+        "KIW-L23",
+        "KIW-L23-user 5.1.1 GRJ90 C567B140 release-keys",
+        "HONOR/KIW-L23/HNKIW-Q:5.1.1/HONORKIW-L23/C567B140:user/release-keys"
+    },
+    /* Honor 5x India L22 */
+    {
+        "KIW-L22",
+        "KIW-L22-user 5.1.1 GRJ90 C675B130 release-keys",
+        "HONOR/KIW-L22/HNKIW-Q:5.1.1/HONORKIW-L22/C675B130:user/release-keys"
+    },
+    /* Honor 5x EU L21 */
+    {
+        "KIW-L21",
+        "KIW-L21-user 5.1.1 GRJ90 C432B130 release-keys",
+        "HONOR/KIW-L21/HNKIW-Q:5.1.1/HONORKIW-L21/C432B130:user/release-keys"
+    },
+    /* Honor 5x AL10 Chinese */
+    {
+        "KIW-AL10",
+        "KIW-AL10-user 5.1.1 GRJ90 C92B175 release-keys",
+        "HONOR/KIW-AL10/HNKIW-Q:5.1.1/HONORKIW-AL10/C92B175:user/release-keys"
+    },
+    /* Honor 5x AL20 Chinese */
+    {
+        "KIW-AL20",
+        "KIW-AL20-user 5.1.1 GRJ90 C432B130 release-keys",
+        "HONOR/KIW-AL20/HNKIW-Q:5.1.1/HONORKIW-AL20/C432B130:user/release-keys"
+    },
+    /* Chinese WCDMA version KIW-UL00 */
+    {
+        "KIW-UL00",
+        "KIW-UL00-user 5.1.1 GRJ90 C00B140 release-keys",
+        "HONOR/KIW-UL00/HNKIW-Q:5.1.1/HONORKIW-UL00/C00B140:user/release-keys"
+    },
+    /* HUAWEI GX5 version KII-L22 (same as honor, evidently from Japan) */
+    {
+        "KII-L22",
+        "KII-L22-user 5.1.1 GRJ90 C635B131 release-keys",
+        "HUAWEI/KII-L22/HWKII-Q:5.1.1/HUAWEIKII-L22/C635B131:user/release-keys"
+    },
+    /* HUAWEI GX5 version KII-L21 (same as honor) */
+    {
+        "KII-L21",
+        "KII-L21-user 5.1.1 GRJ90 C185B130 release-keys",
+        "HUAWEI/KII-L21/HWKII-Q:5.1.1/HUAWEIKII-L21/C185B130:user/release-keys"
+    },
+    { 0, 0, 0 }
+};
 
-void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *board_type)
+void vendor_load_properties()
 {
     char platform[PROP_VALUE_MAX];
     char model[110];
     FILE* fp;
     int rc;
-
-    UNUSED(msm_id);
-    UNUSED(msm_ver);
-    UNUSED(board_type);
+    match_t *match;
 
     rc = property_get("ro.board.platform", platform);
-    if (!rc || !ISMATCH(platform, ANDROID_TARGET))
+    if (!rc || strncmp(platform, ANDROID_TARGET, PROP_VALUE_MAX))
         return;
 
     fp = fopen("/proc/app_info", "rb");
@@ -58,64 +115,14 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         if (strstr(model, "huawei_fac_product_name") != NULL)
             break;
 
-    /* Honor 5x USA L24 */
-    if (strstr(model, "KIW-L24") != NULL) {
-        common_properties();
-        property_set("ro.build.description", "KIW-L24-user 5.1.1 GRJ90 C567B1.0 release-keys");
-        property_set("ro.build.fingerprint", "HONOR/KIW-L24/HNKIW-Q:5.1.1/HONORKIW-L24/C567B130:user/release-keys");
+    for (match = matches; match->model; match++) {
+        if (strstr(model, match->model)) {
+            property_set("ro.build.product", "kiwi");
+            property_set("ro.product.device", "kiwi");
+            property_set("ro.product.model", match->model);
+            property_set("ro.build.description", match->description);
+            property_set("ro.build.fingerprint", match->fingerprint);
+            break;
+        }
     }
-    /* Honor 5x Russia L23 */
-    else if (strstr(model, "KIW-L23") != NULL) {
-        common_properties();
-        property_set("ro.build.description", "KIW-L23-user 5.1.1 GRJ90 C567B140 release-keys");
-        property_set("ro.build.fingerprint", "HONOR/KIW-L23/HNKIW-Q:5.1.1/HONORKIW-L23/C567B140:user/release-keys");
-    }*/
-    /* Honor 5x India L22 */
-    else if (strstr(model, "KIW-L22") != NULL) {
-        common_properties();
-        property_set("ro.build.description", "KIW-L22-user 5.1.1 GRJ90 C675B130 release-keys");
-        property_set("ro.build.fingerprint", "HONOR/KIW-L22/HNKIW-Q:5.1.1/HONORKIW-L22/C675B130:user/release-keys");
-    }
-    /* Honor 5x EU L21 */
-    else if (strstr(model, "KIW-L21") != NULL) {
-        common_properties();
-        property_set("ro.build.description", "KIW-L21-user 5.1.1 GRJ90 C432B130 release-keys");
-        property_set("ro.build.fingerprint", "HONOR/KIW-L21/HNKIW-Q:5.1.1/HONORKIW-L21/C432B130:user/release-keys");
-    }
-    /* Honor 5x AL10 Chinese */
-    else if (strstr(model, "KIW-AL10") != NULL) {
-        common_properties();
-        property_set("ro.build.description", "KIW-AL10-user 5.1.1 GRJ90 C92B175 release-keys");
-        property_set("ro.build.fingerprint", "HONOR/KIW-AL10/HNKIW-Q:5.1.1/HONORKIW-AL10/C92B175:user/release-keys");
-    }
-    /* Honor 5x AL20 Chinese */
-    else if (strstr(model, "KIW-AL20") != NULL) {
-        common_properties();
-        property_set("ro.build.description", "KIW-AL20-user 5.1.1 GRJ90 C432B130 release-keys");
-        property_set("ro.build.fingerprint", "HONOR/KIW-AL20/HNKIW-Q:5.1.1/HONORKIW-AL20/C432B130:user/release-keys");
-    }
-    /* Chinese WCDMA version KIW-UL00 */
-    else if (strstr(model, "KIW-UL00") != NULL) {
-        common_properties();
-        property_set("ro.build.description", "KIW-UL00-user 5.1.1 GRJ90 C00B140 release-keys");
-        property_set("ro.build.fingerprint", "HONOR/KIW-UL00/HNKIW-Q:5.1.1/HONORKIW-UL00/C00B140:user/release-keys");
-    }
-    /* HUAWEI GX5 version KII-L22 (same as honor, evidently from Japan) */
-    else if (strstr(model, "KII-L22") != NULL) {
-        common_properties();
-        property_set("ro.build.description", "KII-L22-user 5.1.1 GRJ90 C635B131 release-keys");
-        property_set("ro.build.fingerprint", "HUAWEI/KII-L22/HWKII-Q:5.1.1/HUAWEIKII-L22/C635B131:user/release-keys");
-    }
-    /* HUAWEI GX5 version KII-L21 (same as honor) */
-    else if (strstr(model, "KII-L21") != NULL) {
-        common_properties();
-        property_set("ro.build.description", "KII-L21-user 5.1.1 GRJ90 C185B130 release-keys");
-        property_set("ro.build.fingerprint", "HUAWEI/KII-L21/HWKII-Q:5.1.1/HUAWEIKII-L21/C185B130:user/release-keys");
-    }
-}
-
-void common_properties();
-{
-    property_set("ro.product.model", "MSM8916 for arm64");
-    property_set("ro.product.name", "msm8916_64");
 }
