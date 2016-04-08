@@ -6,6 +6,7 @@
 /cache        ext4   /dev/block/bootdevice/by-name/cache
 /data         ext4   /dev/block/bootdevice/by-name/userdata  length=-16384
 /recovery     emmc   /dev/block/bootdevice/by-name/recovery  flags=backup=1
+/erecovery     emmc   /dev/block/bootdevice/by-name/erecovery  flags=backup=1
 /misc         emmc   /dev/block/bootdevice/by-name/misc
 /system       ext4   /dev/block/bootdevice/by-name/system
 /cust         ext4   /dev/block/bootdevice/by-name/cust
