@@ -122,6 +122,7 @@ void vendor_load_properties()
             property_set("ro.product.model", match->model);
             property_set("ro.build.description", match->description);
             property_set("ro.build.fingerprint", match->fingerprint);
+            property_set("ro.config.support_otgstorage", "true");
             break;
         }
     }
