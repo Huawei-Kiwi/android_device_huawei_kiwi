@@ -17,4 +17,4 @@
 /firmware     vfat   /dev/block/bootdevice/by-name/modem     flags=backup=1;display=Modem
  
 /external_sd  vfat   /dev/block/mmcblk1p1 /dev/block/mmcblk1 flags=display="Micro SDcard";storage;wipeingui;removable
-/usb-otg      vfat   /dev/block/sda1      /dev/block/sda     flags=removable;storage;display=USB-OTG
+/usb-otg      auto   /dev/block/sda1      /dev/block/sda     flags=removable;storage;display=USB-OTG
