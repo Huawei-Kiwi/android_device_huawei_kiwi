@@ -77,6 +77,10 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 11618204672
 # blockdev --getbsz /dev/block/mmcblk0p19
 BOARD_FLASH_BLOCK_SIZE := 4096
 
+# Time Zone data
+PRODUCT_COPY_FILES += \
+bionic/libc/zoneinfo/tzdata:recovery/root/system/usr/share/zoneinfo/tzdata
+
 # TWRP
 RECOVERY_VARIANT := twrp
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/recovery/root/etc/twrp.fstab
