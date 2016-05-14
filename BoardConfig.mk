@@ -95,6 +95,7 @@ TW_INPUT_BLACKLIST := "accelerometer"
 TW_NO_EXFAT_FUSE := true
 TW_NO_BATT_PERCENT := false
 TW_INCLUDE_NTFS_3G := true
+TW_INCLUDE_CRYPTO := true
 
 # Vold
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
